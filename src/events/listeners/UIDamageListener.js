@@ -6,8 +6,9 @@ class UIDamageListener {
     constructor() {
         eventBus_1.EventBus.getInstance().Subscribe('takeDamage', this.onEvent);
     }
-    onEvent(eventName, eventData) {
+    onEvent(eventData) {
         console.log("UI Received new Damage data");
+        console.log("damage data is:", eventData);
     }
 }
 exports.UIDamageListener = UIDamageListener;

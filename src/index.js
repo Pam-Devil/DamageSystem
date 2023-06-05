@@ -14,7 +14,8 @@ const takeDamage = () => {
 };
 const UI = new UIDamageListener_1.UIDamageListener();
 const Enemy = new EnemyDamageListener_1.EnemyDamageListener();
+const damage = 500;
 console.log("------------ First dispatch ------------------");
 eventBus_1.EventBus.getInstance().DispatchSignal("takeDamage");
 console.log("------------ Second dispatch ------------------");
-eventBus_1.EventBus.getInstance().DispatchSignal("takeDamage");
+eventBus_1.EventBus.getInstance().DispatchSignal("takeDamage", damage);
