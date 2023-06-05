@@ -29,9 +29,9 @@ class EventBus {
         const listeners = this.eventListeners[event];
         if (listeners && listeners.length > 0) {
             const listenersCount = listeners.length;
+            console.log("Signal Dispatched!");
             for (let i = 0; i < listenersCount; i++) {
                 listeners[i](...args);
-                console.log("Signal Dispatched!");
             }
         }
     }
