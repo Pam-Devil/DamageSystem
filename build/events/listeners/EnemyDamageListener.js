@@ -6,7 +6,7 @@ class EnemyDamageListener {
     constructor() {
         eventBus_1.EventBus.getInstance().Subscribe('takeDamage', this.onEvent);
     }
-    onEvent(eventName, eventData) {
+    onEvent(eventData) {
         console.log("Enemy Received new Damage data");
     }
 }

@@ -2,7 +2,7 @@
   "name": "damagesystem",
   "version": "1.0.0",
   "description": "Trying to understand and replicate Warframe Complex Damage system for educational reasons",
-  "main": "index.js",
+  "main": "./build/index.js",
   "scripts": {
     "test": "npm test run ",
     "start": "node --loader ts-node/esm index.ts"
