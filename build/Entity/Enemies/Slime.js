@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Slime = void 0;
+const RNGessus_1 = require("../../cores/RNGessus");
 class Slime {
-    constructor(name, currentLevel, position) {
+    constructor(name, currentLevel, position, accuracy) {
         this.name = name;
-        this.currentLevel = currentLevel;
-        this.position = position;
-        const attributes = this.setAttributes();
-        this.attributes = attributes;
+        this._currentLevel = currentLevel;
+        this._position = position;
+        this._attributes = this.setAttributes();
+        this._accuracy = accuracy;
     }
     setAttributes() {
         return {
@@ -16,14 +17,23 @@ class Slime {
             Piercing: 60
         };
     }
-    getAttributes() {
-        return this.attributes;
+    get Attributes() {
+        return this._attributes;
     }
     walk(delta, Vector3D) {
         console.log("Slime is walking!");
+        return;
     }
     Attack(damageCore, attributes) {
-        this.name;
+        console.log(`${this.name} is attacking!`);
+        const RNgessus = new RNGessus_1.RNGessus();
+        if (RNgessus.attackEvent(this._accuracy) == false) {
+            console.log(`${this.name} failed his attack`);
+            return;
+        }
+        console.log(`${this.name} landed his attack. calculating the damage dealt`);
+        damageCore.doDamage(this.name, this.Attributes);
+        return;
     }
 }
 exports.Slime = Slime;

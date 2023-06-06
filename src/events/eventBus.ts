@@ -21,7 +21,7 @@ export class EventBus implements IEventBus {
       this.eventListeners[event] = [];
     }
     this.eventListeners[event].push(callback);
-    console.log("Subscribed new event:",event)
+    console.log(`Subscribed new event ${event}`);
   }
   Unsubscribe<T>(event: string, callback: EventCallback<T>): void {
     const listeners = this.eventListeners[event];
@@ -33,7 +33,7 @@ export class EventBus implements IEventBus {
     }
   }
 
-  DispatchSignal<T>(event: string, ...args: T[]): void {
+  DispatchSignal<T>(event: string, ...args: any[]): void {
     const listeners = this.eventListeners[event];
     if (listeners && listeners.length > 0) {
       const listenersCount = listeners.length;

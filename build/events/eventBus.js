@@ -16,7 +16,7 @@ class EventBus {
             this.eventListeners[event] = [];
         }
         this.eventListeners[event].push(callback);
-        console.log("Subscribed new event:", event);
+        console.log(`Subscribed new event ${event}`);
     }
     Unsubscribe(event, callback) {
         const listeners = this.eventListeners[event];
