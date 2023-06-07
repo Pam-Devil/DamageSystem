@@ -1,14 +1,8 @@
-import { Readline } from "readline/promises";
 import { Slime } from "./Entity/Enemies/Slime";
 import { Player } from "./Entity/Player";
 import { DamageCore } from "./cores/DamageCore";
-import { EventBus } from "./events/eventBus";
-import { EnemyDamageListener } from "./events/listeners/EnemyDamageListener";
+import { EntityDamageListener } from "./events/listeners/EntityDamageListener";
 import { UIDamageListener } from "./events/listeners/UIDamageListener";
-import * as readline from "readline";
-import { promisify } from "util";
-import { InputSystem } from "./InputSystem";
-import { PlayerDamageListener } from "./events/listeners/PlayerDamageListener";
 import { Pointer } from "./Structs/Reference";
 
 function Main(): void{ 
@@ -30,8 +24,7 @@ function Main(): void{
   };
   const damageCore = new DamageCore();
   const UI = new UIDamageListener();
-  const Enemy = new EnemyDamageListener("Slime");
-  const PlayerListener = new PlayerDamageListener(playerRef); 
+  const Enemy = new EntityDamageListener();
   const damage: number = 500;
   const slime = new Slime("Bob", 50, { x: 20, y: 50 }, 6);
 

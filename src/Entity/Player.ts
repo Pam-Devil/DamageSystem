@@ -31,6 +31,6 @@ export class Player implements IEntity {
     public takeDamage(damage:number){
         const new_health = this._PlayerHealth - damage;
         this.setPlayerHealth(new_health);
-        console.log("Player current health:", this._PlayerHealth);
+        console.log("Player health after damage calculation:", this._PlayerHealth);
     }
 }
