@@ -1,16 +1,26 @@
 import { Player } from "../Entity/Player";
 import { Attributes } from "../Structs/Attributes";
+import { Pointer } from "../Structs/Reference";
+import { EventData } from "../Structs/eventData";
 import { EventBus } from "../events/eventBus";
+import { IEntity } from "../interfaces/IEntity";
 
 export class DamageCore { 
     constructor(){
     }
-    public doDamage(Entity:string, Attributes:{[index:string]:any}): void{
+    public doDamage(Entity:string, Attributes:{[index:string]:any}, target:Pointer<IEntity>): void{
         console.log(`${Entity} is doing damage.`);
         for(const k in Attributes){
             const print = Attributes[k];
             console.log(`${print} points of ${k.toLowerCase()} damage`);
-            EventBus.getInstance().DispatchSignal('takeDamage',100);
         }
+        const eventData: EventData = {
+            event:"takeDamage",
+            data:{
+                targetRef:target,
+                who:"Player",
+                damageAmount:100,}
+            }   
+        EventBus.getInstance().DispatchSignal('takeDamage', eventData);
     }
 }

@@ -2,6 +2,7 @@ import { DamageCore } from "../../cores/DamageCore";
 import { Attributes } from "../../Structs/Attributes";
 import { IEntity } from "../../interfaces/IEntity";
 import { RNGessus } from "../../cores/RNGessus";
+import { Pointer } from "../../Structs/Reference";
 
 
 export class Slime implements IEntity {
@@ -32,12 +33,12 @@ export class Slime implements IEntity {
         console.log("Slime is walking!");
         return;
     }
-    public Attack(damageCore: DamageCore, attributes: Attributes): void {
+    public Attack(damageCore: DamageCore, attributes: Attributes, target:Pointer<IEntity>): void {
         console.log(`${this.name} is attacking!`);
         const hit = this.AccuracyCheck(this._accuracy)
         if (hit) {
             console.log(`${this.name} landed his attack. calculating the damage dealt`);
-            damageCore.doDamage(this.name, this.Attributes);
+            damageCore.doDamage(this.name, this.Attributes, target);
             return;
         }
         console.log(`${this.name} missed his attack.`)

@@ -1,3 +1,3 @@
 export interface IEventListeners {
-    onEvent(eventName:string, eventData:any):void;
+    onEvent(eventName:string, ...args:any[]):void;
 }

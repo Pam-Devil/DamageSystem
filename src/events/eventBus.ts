@@ -16,20 +16,20 @@ export class EventBus implements IEventBus {
     return EventBus.instance;
   }
 
-  Subscribe<T>(event: string, callback: EventCallback<T>): void {
+  Subscribe<T>(who:string,event: string, callback: EventCallback<any>): void {
     if (!this.eventListeners[event]) {
       this.eventListeners[event] = [];
     }
     this.eventListeners[event].push(callback);
-    console.log(`Subscribed new event ${event}`);
+    console.log(`${who} Subscribed to new event ${event}`);
   }
-  Unsubscribe<T>(event: string, callback: EventCallback<T>): void {
+  Unsubscribe<T>(who:string, event: string, callback: EventCallback<T>): void {
     const listeners = this.eventListeners[event];
     if (listeners) {
       this.eventListeners[event] = listeners.filter(
         (listeners) => listeners !== callback
       );
-      console.log("Unsubscribed event:",event);
+      console.log(`${who} Unsubscribed from event:`,event);
     }
   }
 
@@ -42,5 +42,8 @@ export class EventBus implements IEventBus {
         listeners[i](...args);
       }
     }
+  }
+  PrintListeners(){
+    console.log(`Current listeners: ${this.eventListeners}`);
   }
 }
