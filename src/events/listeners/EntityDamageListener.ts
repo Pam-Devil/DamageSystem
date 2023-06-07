@@ -10,5 +10,6 @@ export class EntityDamageListener implements IEventListeners {
     console.log(`${eventData.data.who} Current Health:`,eventData.data.targetRef.value.PlayerHealth);
 
    eventData.data.targetRef.value.takeDamage(eventData.data.damageAmount);
+   EventBus.getInstance().Unsubscribe('EntityDamageListener', eventData.event, this.onEvent);
  }
 }

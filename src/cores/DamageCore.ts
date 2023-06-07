@@ -1,14 +1,16 @@
-import { Player } from "../Entity/Player";
-import { Attributes } from "../Structs/Attributes";
 import { Pointer } from "../Structs/Reference";
 import { EventData } from "../Structs/eventData";
 import { EventBus } from "../events/eventBus";
+import { EntityDamageListener } from "../events/listeners/EntityDamageListener";
+import { UIDamageListener } from "../events/listeners/UIDamageListener";
 import { IEntity } from "../interfaces/IEntity";
 
 export class DamageCore { 
     constructor(){
     }
     public doDamage(Entity:string, Attributes:{[index:string]:any}, target:Pointer<IEntity>): void{
+        new EntityDamageListener() 
+        new UIDamageListener() 
         console.log(`${Entity} is doing damage.`);
         for(const k in Attributes){
             const print = Attributes[k];

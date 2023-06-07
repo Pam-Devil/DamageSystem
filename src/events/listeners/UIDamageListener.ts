@@ -9,6 +9,7 @@ export class UIDamageListener implements IEventListeners {
  onEvent(eventData:any){
     console.log("UI Received new Damage data");
     console.log("damage data from:", "Bob");
+    EventBus.getInstance().Unsubscribe('UIDamageListener', eventData.event, this.onEvent);
  }
 }
 
